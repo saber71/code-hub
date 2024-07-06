@@ -1,0 +1,3 @@
+[submodule "js-tools"]
+	path = js-tools
+	url = https://github.com/saber71/js-tools.git
