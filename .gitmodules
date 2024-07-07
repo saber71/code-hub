@@ -13,3 +13,6 @@
 [submodule "interviews"]
 	path = interviews
 	url = https://gitee.com/saber71/interviews.git
+[submodule "query"]
+	path = query
+	url = https://github.com/saber71/query.git
