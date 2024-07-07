@@ -10,3 +10,6 @@
 [submodule "vue-class"]
 	path = vue-class
 	url = https://github.com/saber71/vue-class.git
+[submodule "interviews"]
+	path = interviews
+	url = https://gitee.com/saber71/interviews.git

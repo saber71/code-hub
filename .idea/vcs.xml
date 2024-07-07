@@ -4,6 +4,7 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-deps-plugin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/injectify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/interviews" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/js-tools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vue-class" vcs="Git" />
   </component>
