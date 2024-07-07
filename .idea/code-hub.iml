@@ -6,9 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/injectify/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/js-tools/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/external-deps-plugin/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/vue-class/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/injectify/dist" />
       <excludeFolder url="file://$MODULE_DIR$/js-tools/dist" />
       <excludeFolder url="file://$MODULE_DIR$/external-deps-plugin/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/vue-class/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

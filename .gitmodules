@@ -7,3 +7,6 @@
 [submodule "external-deps-plugin"]
 	path = external-deps-plugin
 	url = https://github.com/saber71/external-deps-plugin.git
+[submodule "vue-class"]
+	path = vue-class
+	url = https://github.com/saber71/vue-class.git
