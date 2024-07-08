@@ -19,3 +19,6 @@
 [submodule "backend-storage"]
 	path = backend-storage
 	url = https://github.com/saber71/backend-storage.git
+[submodule "collection"]
+	path = collection
+	url = https://github.com/saber71/collection.git

@@ -9,12 +9,14 @@
       <sourceFolder url="file://$MODULE_DIR$/vue-class/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/query/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/backend-storage/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/collection/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/injectify/dist" />
       <excludeFolder url="file://$MODULE_DIR$/js-tools/dist" />
       <excludeFolder url="file://$MODULE_DIR$/external-deps-plugin/dist" />
       <excludeFolder url="file://$MODULE_DIR$/vue-class/dist" />
       <excludeFolder url="file://$MODULE_DIR$/query/dist" />
       <excludeFolder url="file://$MODULE_DIR$/backend-storage/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/collection/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
