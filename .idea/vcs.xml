@@ -5,6 +5,7 @@
     <mapping directory="$PROJECT_DIR$/backend-storage" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/collection" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-deps-plugin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/http-test" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/injectify" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/interviews" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/js-tools" vcs="Git" />

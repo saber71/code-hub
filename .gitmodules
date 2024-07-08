@@ -22,3 +22,6 @@
 [submodule "collection"]
 	path = collection
 	url = https://github.com/saber71/collection.git
+[submodule "http-test"]
+	path = http-test
+	url = https://github.com/saber71/http-test.git
