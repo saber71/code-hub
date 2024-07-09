@@ -25,3 +25,6 @@
 [submodule "http-test"]
 	path = http-test
 	url = https://github.com/saber71/http-test.git
+[submodule "backend-bridge"]
+	path = backend-bridge
+	url = https://github.com/saber71/backend-bridge.git
