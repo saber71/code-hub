@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/backend-storage/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/collection/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/http-test/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/backend-bridge/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/injectify/dist" />
       <excludeFolder url="file://$MODULE_DIR$/js-tools/dist" />
       <excludeFolder url="file://$MODULE_DIR$/external-deps-plugin/dist" />
@@ -19,6 +20,7 @@
       <excludeFolder url="file://$MODULE_DIR$/backend-storage/dist" />
       <excludeFolder url="file://$MODULE_DIR$/collection/dist" />
       <excludeFolder url="file://$MODULE_DIR$/http-test/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/backend-bridge/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
