@@ -28,3 +28,6 @@
 [submodule "backend-bridge"]
 	path = backend-bridge
 	url = https://github.com/saber71/backend-bridge.git
+[submodule "backend-bridge-connector"]
+	path = backend-bridge-connector
+	url = https://github.com/saber71/backend-bridge-connector.git
