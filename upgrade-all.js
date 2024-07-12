@@ -7,10 +7,8 @@ const fixReg = /^fix(\(.+\))?:/
 const featReg = /^feat(\(.+\))?:/
 const versionReg = /"version":(.+),/
 
-const sinceTime = fs.readFileSync("./commit.log", "utf-8").trim()
-
 for (let { dir, dirname } of nodeProjects) {
-  let logs = await exec('git log --oneline --pretty=format:"%s" --since="' + sinceTime + '"', dir)
+  let logs = await exec('git log --oneline --pretty=format:"%s" --n=20', dir)
   logs = logs
     .map((str) => str.split("\n"))
     .flat()
@@ -18,6 +16,7 @@ for (let { dir, dirname } of nodeProjects) {
   let feat = 0,
     fix = 0
   for (let log of logs) {
+    if (log === "chore: upgrade package version") break
     if (featReg.test(log)) feat++
     else if (fixReg.test(log)) fix++
   }
@@ -41,5 +40,3 @@ for (let { dir, dirname } of nodeProjects) {
   await exec("git add .", dir)
   await exec(`git commit -m "chore: upgrade package version"`, dir)
 }
-
-fs.writeFileSync("./commit.log", new Date().toISOString())
