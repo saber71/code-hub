@@ -5,6 +5,7 @@
   "scripts": {
     "install-deps": "node install-deps.js",
     "update-deps": "node update-deps.js",
+    "upgrade-all": "node upgrade-all.js",
     "build-all": "node build-all.js"
   },
   "devDependencies": {

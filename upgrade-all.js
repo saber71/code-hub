@@ -3,6 +3,10 @@ import * as fs from "node:fs"
 import path from "node:path"
 import chalk from "chalk"
 
+/*
+ * 更新npm包的版本号并发布
+ */
+
 // 定义正则表达式，用于匹配fix和feat类型的commit消息，以及版本号信息
 const fixReg = /^fix(\(.+\))?:/
 const featReg = /^feat(\(.+\))?:/
@@ -60,4 +64,8 @@ for (let { dir, dirname } of nodeProjects) {
   await exec("git add .", dir)
   // 提交git仓库中的修改，提交信息为"chore: upgrade package version"
   await exec(`git commit -m "chore: upgrade package version"`, dir)
+  // 打包代码
+  await exec(`pnpm run build`, dir)
+  // 发布包
+  await exec(`pnpm publish`, dir)
 }
