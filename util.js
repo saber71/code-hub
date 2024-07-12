@@ -19,12 +19,17 @@ for (let dir of dirs) {
 }
 
 export function exec(cmd, cwd) {
-  console.log(chalk.yellow(path.basename(cwd)) + ":", cmd)
-  const childProcess = child_process.exec(cmd, { cwd }, (error, _, stderr) => {
-    if (error) throw error
-    if (stderr) console.error(...stderr.split("\n").map((str) => chalk.red(str) + "::" + str + "\n"))
-  })
-  childProcess.on("exit", (code) => {
-    console.log(chalk.blue(path.basename(cwd)) + ":", chalk.yellowBright(cmd), "finished with code", code)
+  return new Promise((resolve, reject) => {
+    console.log(chalk.yellow(path.basename(cwd)) + ":", cmd)
+    const data = []
+    const childProcess = child_process.exec(cmd, { cwd }, (error, stdout, stderr) => {
+      if (error) reject(error)
+      if (stderr) console.error(...stderr.split("\n").map((str) => chalk.red(str) + "::" + str + "\n"))
+      if (stdout) data.push(stdout)
+    })
+    childProcess.on("close", (code) => {
+      console.log(chalk.blue(path.basename(cwd)) + ":", chalk.yellowBright(cmd), "finished with code", code)
+      resolve(data)
+    })
   })
 }
