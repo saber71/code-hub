@@ -15,7 +15,7 @@ const versionReg = /"version":(.+),/
 // 遍历nodeProjects数组，对每个项目进行版本号更新
 for (let { dir, dirname } of nodeProjects) {
   // 执行git log命令，获取最近20条commit消息
-  let logs = await exec('git log --oneline --pretty=format:"%s" --n=20', dir)
+  let logs = await exec('git log --oneline --pretty=format:"%s" -20', dir)
   // 处理commit消息，去除换行和空格
   logs = logs
     .map((str) => str.split("\n"))
