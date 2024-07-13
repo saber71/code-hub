@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/code-hub.iml" filepath="$PROJECT_DIR$/.idea/code-hub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/python-auth/python-auth.iml" filepath="$PROJECT_DIR$/python-auth/python-auth.iml" />
     </modules>
   </component>
 </project>

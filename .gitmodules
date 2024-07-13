@@ -31,3 +31,6 @@
 [submodule "backend-bridge-connector"]
 	path = backend-bridge-connector
 	url = https://github.com/saber71/backend-bridge-connector.git
+[submodule "python-auth"]
+	path = python-auth
+	url = https://github.com/saber71/python-auth.git
