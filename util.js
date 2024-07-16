@@ -24,7 +24,7 @@ export function exec(cmd, cwd) {
     const data = []
     const childProcess = child_process.exec(cmd, { cwd }, (error, stdout, stderr) => {
       if (error) reject(error)
-      if (stderr) console.error(...stderr.split("\n").map((str) => chalk.red(str) + "::" + str + "\n"))
+      if (stderr) console.error(stderr)
       if (stdout) data.push(stdout)
     })
     childProcess.on("close", (code) => {
