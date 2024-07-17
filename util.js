@@ -2,6 +2,7 @@ import * as child_process from "node:child_process"
 import chalk from "chalk"
 import * as fs from "node:fs"
 import * as path from "node:path"
+import axios from "axios"
 
 export const nodeProjects = []
 
@@ -15,23 +16,77 @@ for (let dir of dirs) {
     nodeProjects.push({
       dirname,
       dir,
-      pip: fs.existsSync(path.join(dir, "Pipfile.lock"))
+      pip: fs.existsSync(path.join(dir, "Pipfile.lock")),
+      packageJson: JSON.parse(fs.readFileSync(path.join(dir, "package.json"), "utf-8"))
     })
   }
 }
 
+/**
+ * 使用child_process模块执行命令行命令。
+ *
+ * 此函数通过child_process.exec方法执行指定的命令行命令，并在指定的工作目录中运行。
+ * 它返回一个Promise，允许异步处理命令的执行结果。如果命令执行出错，Promise将被拒绝，
+ * 否则，它将解析为包含命令输出的数组。
+ *
+ * @param {string} cmd 要执行的命令行命令。
+ * @param {string} cwd 命令执行时的工作目录。
+ * @returns {Promise<Array<string>>} 返回一个Promise，解析为包含命令输出的数组。
+ */
 export function exec(cmd, cwd) {
   return new Promise((resolve, reject) => {
+    // 打印正在执行的命令及其工作目录
     console.log(chalk.yellow(path.basename(cwd)) + ":", cmd)
-    const data = []
+
+    const data = [] // 用于收集命令的输出数据
+
+    // 创建一个子进程来执行命令
     const childProcess = child_process.exec(cmd, { cwd }, (error, stdout, stderr) => {
+      // 如果有错误发生，拒绝Promise并返回错误信息
       if (error) reject(error)
-      if (stderr) console.error(stderr)
+      if (stderr) console.log(stderr)
       if (stdout) data.push(stdout)
     })
+
+    // 当子进程关闭时，打印命令执行的结果并解析Promise
     childProcess.on("close", (code) => {
+      // 打印命令执行完成的消息，包括命令、工作目录和退出码
       console.log(chalk.blue(path.basename(cwd)) + ":", chalk.yellowBright(cmd), "finished with code", code)
-      resolve(data)
+      resolve(data) // 解析Promise，传递收集到的命令输出数据
     })
   })
+}
+
+/**
+ * 异步函数：发布npm包
+ *
+ * @param {string} dir - 包的目录路径
+ * @param {Object} packageJson - 包的package.json对象
+ * @returns {void}
+ *
+ * 此函数检查包是否标记为私有，如果是，则不执行任何操作。
+ * 它随后尝试从npm镜像获取最新的包版本，并与package.json中的版本进行比较。
+ * 如果版本不匹配，则执行构建和发布流程。
+ */
+export async function publish(dir, packageJson) {
+  // 检查package.json中的private属性，如果是私有包则不发布
+  if (packageJson.private === true || packageJson.private === "true") return
+
+  try {
+    // 从npm获取当前包的最新版本信息
+    const res = await axios.get(`https://registry.npmjs.org/${packageJson.name}/latest`)
+    const latestVersion = res.data.version
+
+    let localVersion = packageJson.version
+    if (localVersion !== latestVersion) localVersion = chalk.red(localVersion)
+    console.log(chalk.blue(packageJson.name), "本地版本：" + localVersion, "远程版本：" + latestVersion)
+
+    // 比较本地版本和最新版本，如果版本不同则进行构建和发布
+    if (latestVersion !== packageJson.version) {
+      await exec("pnpm run build", dir) // 执行构建命令
+      await exec("pnpm publish", dir) // 执行发布命令
+    }
+  } catch (e) {
+    // 捕获并忽略任何错误，确保函数不会因为错误而中断执行
+  }
 }

@@ -1,4 +1,4 @@
-import { exec, nodeProjects } from "./util.js"
+import { exec, nodeProjects, publish } from "./util.js"
 import * as fs from "node:fs"
 import path from "node:path"
 import chalk from "chalk"
@@ -13,7 +13,7 @@ const featReg = /^feat(\(.+\))?:/
 const versionReg = /"version":(.+),/
 
 // 遍历nodeProjects数组，对每个项目进行版本号更新
-for (let { dir, dirname } of nodeProjects) {
+for (let { dir, dirname, packageJson } of nodeProjects) {
   // 执行git log命令，获取最近20条commit消息
   let logs = await exec('git log --oneline --pretty=format:"%s" -20', dir)
   // 处理commit消息，去除换行和空格
@@ -64,8 +64,6 @@ for (let { dir, dirname } of nodeProjects) {
   await exec("git add .", dir)
   // 提交git仓库中的修改，提交信息为"chore: upgrade package version"
   await exec(`git commit -m "chore: upgrade package version"`, dir)
-  // 打包代码
-  await exec(`pnpm run build`, dir)
   // 发布包
-  await exec(`pnpm publish`, dir)
+  await publish(dir, packageJson)
 }

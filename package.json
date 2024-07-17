@@ -6,9 +6,11 @@
     "install-deps": "node install-deps.js",
     "update-deps": "node update-deps.js",
     "upgrade-all": "node upgrade-all.js",
-    "build-all": "node build-all.js"
+    "build-all": "node build-all.js",
+    "publish-all": "node publish-all.js"
   },
   "devDependencies": {
+    "axios": "^1.7.2",
     "chalk": "latest",
     "prettier": "latest"
   }
