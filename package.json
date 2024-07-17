@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "install-deps": "node install-deps.js",
-    "update-deps": "node update-deps.js",
-    "upgrade-all": "node upgrade-all.js",
     "build-all": "node build-all.js",
-    "publish-all": "node publish-all.js"
+    "install-deps": "node install-deps.js",
+    "publish-all": "node publish-all.js",
+    "start-backend": "node start-backend.js",
+    "update-deps": "node update-deps.js",
+    "upgrade-all": "node upgrade-all.js"
   },
   "devDependencies": {
     "axios": "^1.7.2",
