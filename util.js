@@ -3,6 +3,7 @@ import chalk from "chalk"
 import * as fs from "node:fs"
 import * as path from "node:path"
 import axios from "axios"
+import process from "node:process"
 
 export const nodeProjects = []
 
@@ -17,10 +18,25 @@ for (let dir of dirs) {
       dirname,
       dir,
       pip: fs.existsSync(path.join(dir, "Pipfile.lock")),
-      packageJson: JSON.parse(fs.readFileSync(path.join(dir, "package.json"), "utf-8"))
+      packageJson: JSON.parse(fs.readFileSync(path.join(dir, "package.json"), "utf-8")),
+      chalk: chalk.rgb((Math.random() * 255) | 0, (Math.random() * 255) | 0, (Math.random() * 255) | 0)
     })
   }
 }
+
+const aliveChildProcess = []
+
+// 监听进程的退出事件
+process.on("exit", () => {
+  // 遍历所有存活的子进程并杀死它们
+  aliveChildProcess.forEach((p) => p.kill())
+})
+
+// 监听SIGINT信号（如Ctrl+C）
+process.on("SIGINT", () => {
+  // 遍历所有存活的子进程并杀死它们
+  aliveChildProcess.forEach((p) => p.kill())
+})
 
 /**
  * 使用child_process模块执行命令行命令。
@@ -34,24 +50,33 @@ for (let dir of dirs) {
  * @returns {Promise<Array<string>>} 返回一个Promise，解析为包含命令输出的数组。
  */
 export function exec(cmd, cwd) {
+  const chalkInstance = nodeProjects.find((p) => p.dir === cwd)?.chalk || chalk
   return new Promise((resolve, reject) => {
+    const dirname = chalkInstance(path.basename(cwd))
     // 打印正在执行的命令及其工作目录
-    console.log(chalk.yellow(path.basename(cwd)) + ":", cmd)
+    console.log(`[${dirname}]`, chalk.red(cmd))
 
     const data = [] // 用于收集命令的输出数据
 
     // 创建一个子进程来执行命令
-    const childProcess = child_process.exec(cmd, { cwd }, (error, stdout, stderr) => {
+    const childProcess = child_process.exec(cmd, { cwd }, (error, stdout) => {
       // 如果有错误发生，拒绝Promise并返回错误信息
       if (error) reject(error)
-      if (stderr) console.log(stderr)
       if (stdout) data.push(stdout)
+    })
+    aliveChildProcess.push(childProcess)
+
+    childProcess.stdout.on("data", (data) => {
+      data = data.trim()
+      if (data) console.log(`[${dirname}]`, data)
     })
 
     // 当子进程关闭时，打印命令执行的结果并解析Promise
     childProcess.on("close", (code) => {
       // 打印命令执行完成的消息，包括命令、工作目录和退出码
-      console.log(chalk.blue(path.basename(cwd)) + ":", chalk.yellowBright(cmd), "finished with code", code)
+      console.log(`[${dirname}]`, chalk.blue("finished with code"), code)
+      const index = aliveChildProcess.indexOf(childProcess)
+      if (index >= 0) aliveChildProcess.splice(index, 1)
       resolve(data) // 解析Promise，传递收集到的命令输出数据
     })
   })
@@ -88,5 +113,55 @@ export async function publish(dir, packageJson) {
     }
   } catch (e) {
     // 捕获并忽略任何错误，确保函数不会因为错误而中断执行
+  }
+}
+
+/**
+ * 异步启动所有项目。
+ * @param {Array} projects - 项目数组，每个项目对象应包含packageJson和dir属性。
+ */
+export function startAll(projects) {
+  // 初始化一个对象，用于通过项目名快速查找项目对象
+  const map = {}
+  // 初始化一个对象，用于记录已经启动的项目，避免重复启动
+  const started = {}
+
+  // 填充map对象，方便后续通过项目名查找项目对象
+  projects.forEach((p) => (map[p.packageJson.name] = p))
+
+  // 遍历项目列表，启动每个项目
+  for (let project of projects) {
+    start(project)
+  }
+
+  /**
+   * 异步启动一个项目及其依赖项目。
+   * @param {Object} project - 项目对象，应包含packageJson和dir属性。
+   */
+  function start(project) {
+    // 如果项目已经启动，则直接返回
+    if (started[project.packageJson.name]) return
+    // 标记项目为已经开始启动
+    started[project.packageJson.name] = true
+
+    // 组合并去重项目的所有依赖类型（dependencies、devDependencies、peerDependencies）
+    const deps = [
+      ...new Set(
+        Object.keys(project.packageJson.dependencies || {}).concat(
+          Object.keys(project.packageJson.devDependencies || {}),
+          Object.keys(project.packageJson.peerDependencies || {})
+        )
+      )
+    ]
+      // 过滤出map中存在的依赖项目，并转换为项目对象数组
+      .filter((name) => map[name])
+      .map((name) => map[name])
+
+    // 递归启动项目的所有依赖项目
+    for (let project of deps) {
+      start(project)
+    }
+    // 启动当前项目
+    exec("pnpm run start", project.dir)
   }
 }
