@@ -66,9 +66,21 @@ export function exec(cmd, cwd) {
     })
     aliveChildProcess.push(childProcess)
 
+    /**
+     * 监听子进程的标准输出流的数据事件。
+     * 当有数据输出时，进行处理并打印到控制台。
+     */
     childProcess.stdout.on("data", (data) => {
+      // 去除数据两端的空格，以确保处理的数据不包含额外的空格。
       data = data.trim()
-      if (data) console.log(`[${dirname}]`, data)
+
+      // 检查处理后的数据是否为空，非空数据才进行进一步处理。
+      if (data) {
+        // 将数据按行分割，并过滤掉空行，准备进行打印。
+        const arr = data.split("\n").filter((str) => !!str)
+        // 遍历处理后的数据行，每行前添加标识，然后打印到控制台。
+        arr.forEach((str) => console.log(`[${dirname}]`, str))
+      }
     })
 
     // 当子进程关闭时，打印命令执行的结果并解析Promise
@@ -87,13 +99,13 @@ export function exec(cmd, cwd) {
  *
  * @param {string} dir - 包的目录路径
  * @param {Object} packageJson - 包的package.json对象
- * @returns {void}
+ * @param chalk - 用于设置消息颜色的chalk实例
  *
  * 此函数检查包是否标记为私有，如果是，则不执行任何操作。
  * 它随后尝试从npm镜像获取最新的包版本，并与package.json中的版本进行比较。
  * 如果版本不匹配，则执行构建和发布流程。
  */
-export async function publish(dir, packageJson) {
+export async function publish(dir, packageJson, chalk) {
   // 检查package.json中的private属性，如果是私有包则不发布
   if (packageJson.private === true || packageJson.private === "true") return
 
@@ -104,7 +116,7 @@ export async function publish(dir, packageJson) {
 
     let localVersion = packageJson.version
     if (localVersion !== latestVersion) localVersion = chalk.red(localVersion)
-    console.log(chalk.blue(packageJson.name), "本地版本：" + localVersion, "远程版本：" + latestVersion)
+    console.log(`[${chalk(packageJson.name)}]`, "本地版本：" + localVersion, "远程版本：" + latestVersion)
 
     // 比较本地版本和最新版本，如果版本不同则进行构建和发布
     if (latestVersion !== packageJson.version) {

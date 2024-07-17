@@ -1,5 +1,5 @@
 import { nodeProjects, publish } from "./util.js"
 
-for (let { dir, packageJson } of nodeProjects) {
-  await publish(dir, packageJson)
+for (let { dir, packageJson, chalk } of nodeProjects) {
+  await publish(dir, packageJson, chalk)
 }
