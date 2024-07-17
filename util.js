@@ -7,13 +7,15 @@ export const nodeProjects = []
 
 const __dirname = path.resolve(".")
 const dirs = fs.readdirSync(__dirname)
+
 for (let dir of dirs) {
   const dirname = dir
   dir = path.join(__dirname, dir)
   if (fs.existsSync(path.join(dir, "package.json"))) {
     nodeProjects.push({
       dirname,
-      dir
+      dir,
+      pip: fs.existsSync(path.join(dir, "Pipfile.lock"))
     })
   }
 }

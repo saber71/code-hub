@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend-auth/backend-auth.iml" filepath="$PROJECT_DIR$/backend-auth/backend-auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/code-hub.iml" filepath="$PROJECT_DIR$/.idea/code-hub.iml" />
       <module fileurl="file://$PROJECT_DIR$/python-auth/python-auth.iml" filepath="$PROJECT_DIR$/python-auth/python-auth.iml" />
     </modules>
