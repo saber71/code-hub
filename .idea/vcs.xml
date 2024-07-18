@@ -4,6 +4,7 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend-auth" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend-bridge" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backend-identity" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend-storage" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/collection" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-deps-plugin" vcs="Git" />
