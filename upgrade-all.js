@@ -34,6 +34,14 @@ for (let { dir, chalk, packageJson } of nodeProjects) {
   }
   // 读取package.json文件内容
   let packageJsonText = fs.readFileSync(path.join(dir, "package.json"), "utf-8")
+  let setupText = "",
+    setupVersion = ""
+  const setupPath = path.join(dir, "setup.py")
+  if (fs.existsSync(setupPath)) {
+    setupText = fs.readFileSync(setupText, "utf-8")
+    const matchResult = setupText.match(/version=".+"/)
+    if (matchResult) setupVersion = matchResult[0]
+  }
   // 匹配版本号信息
   const matchResult = packageJsonText.match(versionReg)
   // 如果没有匹配到版本号信息，则抛出错误
@@ -57,6 +65,11 @@ for (let { dir, chalk, packageJson } of nodeProjects) {
   packageJsonText = packageJsonText.replace(field, `"version": "${version}",`)
   // 写回修改后的package.json文件
   fs.writeFileSync(path.join(dir, "package.json"), packageJsonText)
+  // 写回setup.py文件
+  if (setupVersion) {
+    setupText = setupText.replace(setupVersion, `version="${version}"`)
+    fs.writeFileSync(setupPath, setupText)
+  }
   // 添加所有文件到git仓库，准备提交
   await exec("git add .", dir)
   // 提交git仓库中的修改，提交信息为"chore: upgrade package version"
