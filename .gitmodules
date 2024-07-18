@@ -31,3 +31,6 @@
 [submodule "backend-auth"]
 	path = backend-auth
 	url = https://github.com/saber71/backend-auth.git
+[submodule "backend-identity"]
+	path = backend-identity
+	url = https://github.com/saber71/backend-identity.git
