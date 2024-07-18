@@ -105,7 +105,7 @@ export function exec(cmd, cwd) {
  * 它随后尝试从npm镜像获取最新的包版本，并与package.json中的版本进行比较。
  * 如果版本不匹配，则执行构建和发布流程。
  */
-export async function publish(dir, packageJson, chalk) {
+export async function publish(dir, packageJson, chalk, pip) {
   // 检查package.json中的private属性，如果是私有包则不发布
   if (packageJson.private === true || packageJson.private === "true") return
 
@@ -121,7 +121,9 @@ export async function publish(dir, packageJson, chalk) {
     // 比较本地版本和最新版本，如果版本不同则进行构建和发布
     if (latestVersion !== packageJson.version) {
       await exec("pnpm run build", dir) // 执行构建命令
-      await exec("pnpm publish", dir) // 执行发布命令
+      // 执行发布命令
+      if (pip) await exec("twine upload dist/*", dir)
+      else await exec("pnpm publish", dir)
     }
   } catch (e) {
     // 捕获并忽略任何错误，确保函数不会因为错误而中断执行
