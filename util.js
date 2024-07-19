@@ -100,6 +100,7 @@ export function exec(cmd, cwd) {
  * @param {string} dir - 包的目录路径
  * @param {Object} packageJson - 包的package.json对象
  * @param chalk - 用于设置消息颜色的chalk实例
+ * @param {boolean} pip - 是否是python项目
  *
  * 此函数检查包是否标记为私有，如果是，则不执行任何操作。
  * 它随后尝试从npm镜像获取最新的包版本，并与package.json中的版本进行比较。
