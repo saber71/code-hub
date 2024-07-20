@@ -123,7 +123,8 @@ export async function publish(dir, packageJson, chalk, pip) {
     if (latestVersion !== packageJson.version) {
       await exec("pnpm run build", dir) // 执行构建命令
       // 执行发布命令
-      if (pip) await exec("twine upload dist/*", dir)
+      if (packageJson.scripts.upload) await exec("pnpm run upload", dir)
+      else if (packageJson.scripts["upload-python"]) await exec("pnpm run upload-python", dir)
       else await exec("pnpm publish", dir)
     }
   } catch (e) {
