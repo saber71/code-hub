@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/aero-tactician/aero-tactician.iml" filepath="$PROJECT_DIR$/aero-tactician/aero-tactician.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend-auth/backend-auth.iml" filepath="$PROJECT_DIR$/backend-auth/backend-auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend-bridge/backend-bridge.iml" filepath="$PROJECT_DIR$/backend-bridge/backend-bridge.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend-identity/backend-identity.iml" filepath="$PROJECT_DIR$/backend-identity/backend-identity.iml" />
