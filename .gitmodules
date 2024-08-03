@@ -37,3 +37,6 @@
 [submodule "aero-tactician"]
 	path = aero-tactician
 	url = https://github.com/saber71/aero-tactician.git
+[submodule "legacy-of-lords"]
+	path = legacy-of-lords
+	url = https://github.com/saber71/legacy-of-lords.git
