@@ -26,6 +26,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="Pipenv (python-auth) interpreter library" level="application" />
   </component>
 </module>
