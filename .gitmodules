@@ -40,3 +40,6 @@
 [submodule "legacy-of-lords"]
 	path = legacy-of-lords
 	url = https://github.com/saber71/legacy-of-lords.git
+[submodule "byzantine"]
+	path = byzantine
+	url = https://github.com/saber71/byzantine.git
