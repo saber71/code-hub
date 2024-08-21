@@ -16,6 +16,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/byzantine/pom.xml" />
+        <option value="$PROJECT_DIR$/whispers-of-warlocks/pom.xml" />
       </list>
     </option>
   </component>
