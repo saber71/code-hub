@@ -43,3 +43,6 @@
 [submodule "byzantine"]
 	path = byzantine
 	url = https://github.com/saber71/byzantine.git
+[submodule "whispers-of-warlocks"]
+	path = whispers-of-warlocks
+	url = https://github.com/saber71/whispers-of-warlocks.git
