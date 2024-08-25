@@ -6,7 +6,6 @@
     <mapping directory="$PROJECT_DIR$/backend-bridge" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend-identity" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend-storage" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/byzantine" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/collection" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-deps-plugin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/http-test" vcs="Git" />

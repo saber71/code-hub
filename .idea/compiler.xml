@@ -7,9 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="byzantine" />
         <module name="whispers-of-warlocks" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="byzantine" target="22" />
+    </bytecodeTargetLevel>
   </component>
 </project>
