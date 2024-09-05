@@ -16,27 +16,12 @@
 [submodule "query"]
 	path = query
 	url = https://github.com/saber71/query.git
-[submodule "backend-storage"]
-	path = backend-storage
-	url = https://github.com/saber71/backend-storage.git
 [submodule "collection"]
 	path = collection
 	url = https://github.com/saber71/collection.git
 [submodule "http-test"]
 	path = http-test
 	url = https://github.com/saber71/http-test.git
-[submodule "backend-bridge"]
-	path = backend-bridge
-	url = https://github.com/saber71/backend-bridge.git
-[submodule "backend-auth"]
-	path = backend-auth
-	url = https://github.com/saber71/backend-auth.git
-[submodule "backend-identity"]
-	path = backend-identity
-	url = https://github.com/saber71/backend-identity.git
-[submodule "aero-tactician"]
-	path = aero-tactician
-	url = https://github.com/saber71/aero-tactician.git
-[submodule "legacy-of-lords"]
-	path = legacy-of-lords
-	url = https://github.com/saber71/legacy-of-lords.git
+[submodule "whispers-of-warlocks"]
+	path = whispers-of-warlocks
+	url = https://github.com/saber71/whispers-of-warlocks.git

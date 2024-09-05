@@ -2,18 +2,14 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/backend-auth" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/backend-bridge" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/backend-identity" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/backend-storage" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/collection" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-deps-plugin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/http-test" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/injectify" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/interviews" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/js-tools" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/legacy-of-lords" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/query" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vue-class" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/whispers-of-warlocks" vcs="Git" />
   </component>
 </project>

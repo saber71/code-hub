@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/backend-auth/backend-auth.iml" filepath="$PROJECT_DIR$/backend-auth/backend-auth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend-bridge/backend-bridge.iml" filepath="$PROJECT_DIR$/backend-bridge/backend-bridge.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend-identity/backend-identity.iml" filepath="$PROJECT_DIR$/backend-identity/backend-identity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend-storage/backend-storage.iml" filepath="$PROJECT_DIR$/backend-storage/backend-storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/code-hub.iml" filepath="$PROJECT_DIR$/.idea/code-hub.iml" />
-      <module fileurl="file://$PROJECT_DIR$/legacy-of-lords/legacy-of-lords.iml" filepath="$PROJECT_DIR$/legacy-of-lords/legacy-of-lords.iml" />
     </modules>
   </component>
 </project>
