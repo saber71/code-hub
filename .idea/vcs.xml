@@ -10,6 +10,5 @@
     <mapping directory="$PROJECT_DIR$/js-tools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/query" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vue-class" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/whispers-of-warlocks" vcs="Git" />
   </component>
 </project>
