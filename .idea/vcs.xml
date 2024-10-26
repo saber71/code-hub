@@ -7,6 +7,7 @@
     <mapping directory="$PROJECT_DIR$/http-test" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/injectify" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/interviews" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/js-scripts" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/js-tools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/query" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vue-class" vcs="Git" />

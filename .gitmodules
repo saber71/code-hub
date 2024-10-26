@@ -22,6 +22,6 @@
 [submodule "http-test"]
 	path = http-test
 	url = https://github.com/saber71/http-test.git
-[submodule "whispers-of-warlocks"]
-	path = whispers-of-warlocks
-	url = https://github.com/saber71/whispers-of-warlocks.git
+[submodule "js-scripts"]
+	path = js-scripts
+	url = https://github.com/saber71/js-scripts.git
