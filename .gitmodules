@@ -25,3 +25,6 @@
 [submodule "js-scripts"]
 	path = js-scripts
 	url = https://github.com/saber71/js-scripts.git
+[submodule "dom-console"]
+	path = dom-console
+	url = https://github.com/saber71/dom-console.git

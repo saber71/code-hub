@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/collection" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/dom-console" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-deps-plugin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/http-test" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/injectify" vcs="Git" />
