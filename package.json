@@ -11,7 +11,7 @@
     "upgrade-all": "node upgrade-all.js"
   },
   "devDependencies": {
-    "axios": "^1.7.2",
+    "axios": "^1.7.7",
     "chalk": "latest",
     "prettier": "latest"
   }
